@@ -2,11 +2,21 @@ package com.anderson.demokotlin.service
 
 import com.anderson.demokotlin.model.Invoice
 import org.springframework.stereotype.Service
+import java.time.LocalDate
 
 @Service
 class ServiceInvoiceImp: ServiceInvoice {
 
-    var invoices: MutableList<Invoice> = arrayListOf();
+
+    var invoices: MutableList<Invoice> = initList();
+
+    private fun initList(): MutableList<Invoice> {
+        return mutableListOf(
+                Invoice(1, "Invoice one", LocalDate.now()),
+                Invoice(2, "Invoice two", LocalDate.now()),
+                Invoice(3, "Invoice three", LocalDate.now()),
+        )
+    }
 
     override fun getAllInvoice(description: String): List<Invoice> {
         return invoices;
